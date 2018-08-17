@@ -1,8 +1,8 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Tags from '../components/Tags';
+import HelmetBase from '../components/HelmetBase'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <div className='section'>
-        <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
+        <HelmetBase siteTitle={siteTitle} pageTitle={post.frontmatter.title} />
         <h2 className='is-size-3 has-text-weight-bold'>{post.frontmatter.title}</h2>
         <p>{post.frontmatter.date}</p>
         <Tags list={post.frontmatter.tags} />

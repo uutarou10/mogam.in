@@ -1,9 +1,8 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
-import Helmet from 'react-helmet'
-
 import Tags from '../components/Tags'
+import HelmetBase from '../components/HelmetBase';
 
 
 class BlogIndex extends React.Component {
@@ -13,7 +12,7 @@ class BlogIndex extends React.Component {
 
     return (
       <div className='section'>
-        <Helmet title={siteTitle} />
+        <HelmetBase siteTitle={siteTitle} />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
