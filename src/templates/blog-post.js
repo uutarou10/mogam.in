@@ -2,8 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import get from 'lodash/get'
-
-import Bio from '../components/Bio'
+import Tags from '../components/Tags';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -12,17 +11,18 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pathContext
 
     return (
-      <div>
+      <div className='section'>
         <Helmet title={`${post.frontmatter.title} | ${siteTitle}`} />
-        <h1>{post.frontmatter.title}</h1>
+        <h2 className='is-size-3 has-text-weight-bold'>{post.frontmatter.title}</h2>
         <p>{post.frontmatter.date}</p>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Tags list={post.frontmatter.tags} />
         <hr />
-        <Bio />
-
-        <ul>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} className='content' />
+        <hr />
+        
+        <ul className='columns is-mobile'>
           {previous && (
-            <li>
+            <li className='column has-text-left'>
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
@@ -30,7 +30,7 @@ class BlogPostTemplate extends React.Component {
           )}
 
           {next && (
-            <li>
+            <li className='column has-text-right'>
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
               </Link>
@@ -57,7 +57,8 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY/MM/DD")
+        tags
       }
     }
   }

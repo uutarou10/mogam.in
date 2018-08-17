@@ -3,7 +3,8 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
 
-import Bio from '../components/Bio'
+import Tags from '../components/Tags'
+
 
 class BlogIndex extends React.Component {
   render() {
@@ -11,21 +12,21 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allMarkdownRemark.edges')
 
     return (
-      <div>
+      <div className='section'>
         <Helmet title={siteTitle} />
-        <Bio />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
-            <div key={node.fields.slug}>
-              <h3>
+            <article key={node.fields.slug} className='box'>
+              <h2 className='is-size-5 has-text-weight-bold'>
                 <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
                   {title}
                 </Link>
-              </h3>
+              </h2>
               <small>{node.frontmatter.date}</small>
+              <Tags list={node.frontmatter.tags} />
               <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
+            </article>
           )
         })}
       </div>
@@ -50,8 +51,9 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "DD MMMM, YYYY")
+            date(formatString: "YYYY/MM/DD")
             title
+            tags
           }
         }
       }

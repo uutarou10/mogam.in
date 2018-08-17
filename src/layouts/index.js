@@ -1,6 +1,7 @@
 import React from 'react'
 import './common.scss'
-import Header from './header'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 export default ({location, children, data}) => {
   const title = data.site.siteMetadata.title
@@ -10,6 +11,7 @@ export default ({location, children, data}) => {
       <main className='container'>
         {children()}
       </main>
+      <Footer />
     </div>
   )
 }
