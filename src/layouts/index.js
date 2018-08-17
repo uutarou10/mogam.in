@@ -1,41 +1,25 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import './common.scss'
+import Header from './header'
 
-class Template extends React.Component {
-  render() {
-    const { location, children } = this.props
-    let header
-    if (location.pathname === '/') {
-      header = (
-        <h1>
-          <Link to={'/'} >
-            Gatsby Starter Blog
-          </Link>
-        </h1>
-      )
-    } else {
-      header = (
-        <h3>
-          <Link to={'/'}>
-            Gatsby Starter Blog
-          </Link>
-        </h3>
-      )
-    }
-    return (
-      <div>
-        {header}
+export default ({location, children, data}) => {
+  const title = data.site.siteMetadata.title
+  return (
+    <div>
+      <Header title={title} />
+      <main className='container'>
         {children()}
-      </div>
-    )
+      </main>
+    </div>
+  )
+}
+
+export const query = graphql`
+  query LayoutQuery{
+    site {
+      siteMetadata {
+        title
+      }
+    }
   }
-}
-
-Template.propTypes = {
-  children: React.PropTypes.func,
-  location: React.PropTypes.object,
-  route: React.PropTypes.object,
-}
-
-export default Template
+`
