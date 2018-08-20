@@ -18,7 +18,7 @@ class BlogIndex extends React.Component {
           return (
             <article key={node.fields.slug} className='box'>
               <h2 className='is-size-5 has-text-weight-bold'>
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
+                <Link to={node.fields.slug}>
                   {title}
                 </Link>
               </h2>

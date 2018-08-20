@@ -5,4 +5,4 @@ export default ({siteTitle, pageTitle = ''}) => {
   return (
     <Helmet title={pageTitle.length === 0 ? siteTitle : `${pageTitle} | ${siteTitle}`} />
   )
-}
+} 

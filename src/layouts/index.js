@@ -7,7 +7,7 @@ export default ({location, children, data}) => {
   const title = data.site.siteMetadata.title
   return (
     <div>
-      <Header title={title} />
+      <Header title={title} location={location} />
       <main className='container'>
         {children()}
       </main>
