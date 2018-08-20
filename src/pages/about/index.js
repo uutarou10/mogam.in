@@ -4,6 +4,7 @@ import Profile from '../../components/About/Profile';
 import Accounts from '../../components/About/Accounts';
 import DescriptionList from '../../components/About/DescriptionList';
 import styled from 'styled-components';
+import Icon from './uutarou.jpg'
 
 const FrameWrapper = styled.div`
   iframe {
@@ -22,9 +23,32 @@ export default ({data}) => {
       <p className='is-italic'>雑に紹介</p>
       <div className='columns'>
         <div className='column'>
-          がぞう
+          <figure
+            className='image'
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <img
+              src={Icon}
+              alt='プロフィール画像'
+              className='is-rounded'
+              style={{
+                width: '50%'
+              }}
+            />
+          </figure>
         </div>
-        <div className='column has-text-centered'>
+        <div
+          className='column has-text-centered'
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+        >
           <Profile profile={data.dataYaml.profile} />
         </div>
       </div>
