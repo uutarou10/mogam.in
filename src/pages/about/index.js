@@ -1,16 +1,11 @@
 import React from 'react';
 import HelmetBase from '../../components/HelmetBase'
-import styled from 'styled-components';
-
-const ProfileDlContainer = styled.dl`
-  line-height: 1.8rem;
-  dt {
-    font-weight: bold;
-    font-size: 1.1rem;
-  }
-`
+import Profile from '../../components/About/Profile';
+import Accounts from '../../components/About/Accounts';
+import DescriptionList from '../../components/About/DescriptionList';
 
 export default ({data}) => {
+  console.log(data);
   const siteTitle = data.site.siteMetadata.title
   return (
     <div className='section'>
@@ -18,40 +13,65 @@ export default ({data}) => {
       <h2 className='is-size-3 has-text-weight-bold'>About me</h2>
       <hr />
       <h3 className='is-size-4 has-text-weight-bold'>Profile</h3>
-      <p>雑に紹介</p>
+      <p className='is-italic'>雑に紹介</p>
       <div className='columns'>
         <div className='column'>
           がぞう
         </div>
         <div className='column has-text-centered'>
-          <ProfileDlContainer>
-            <dt>Handle</dt>
-            <dd>ううたろ / モガミン</dd>
-            <dt>Birthday</dt>
-            <dd>February 2nd, 1997</dd>
-            <dt>Location</dt>
-            <dd>Yokohama, Kanagawa</dd>
-          </ProfileDlContainer>
+          <Profile profile={data.dataYaml.profile} />
         </div>
       </div>
 
       <h3 className='is-size-4 has-text-weight-bold'>Skills</h3>
-      <p>いろいろお勉強中…</p>
+      <p className='is-italic'>いろいろお勉強中…</p>
+      <DescriptionList list={data.dataYaml.skills} />
 
       <h3 className='is-size-4 has-text-weight-bold'>Accounts</h3>
-      <p>アカウントたち</p>
+      <p className='is-italic'>アカウントたち</p>
+      <Accounts accounts={data.dataYaml.accounts} />
 
       <h3 className='is-size-4 has-text-weight-bold'>Hobbies</h3>
-      <p>割とどうでもいい話</p>
+      <p className='is-italic'>割とどうでもいい話</p>
+      <DescriptionList list={data.dataYaml.hobbies} />
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/NypVvG9fQ7o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>▲でんぱ組を知ったきっかけとなった曲。</p>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/EGy39OMyHzw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>▲イントロとテンポがたまらん。ライブで聴くとアガる。</p>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/qDrm8NfhgsU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <p>▲7人体制初の夏曲。ライブで聴きたいですなぁ。</p>
     </div>
   )
 }
 
 export const aboutQuery = graphql`
-  query AboutQuery {
+  query AboutQuery{
     site {
       siteMetadata {
         title
+      }
+    }
+    dataYaml {
+      profile {
+        name
+        desc
+      }
+      skills {
+        name
+        desc
+      }
+      accounts {
+        name
+        uid
+        url
+      }
+
+      hobbies {
+        name
+        desc
       }
     }
   }

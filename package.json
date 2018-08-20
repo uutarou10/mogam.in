@@ -26,6 +26,7 @@
     "gatsby-source-filesystem": "^1.4.3",
     "gatsby-transformer-remark": "^1.7.1",
     "gatsby-transformer-sharp": "^1.6.1",
+    "gatsby-transformer-yaml": "^1.5.18",
     "lodash": "^4.17.10",
     "styled-components": "^3.4.2"
   },

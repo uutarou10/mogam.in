@@ -1,0 +1,37 @@
+profile:
+  - name: Handle
+    desc: ううたろ / モガミン
+  - name: Birthday
+    desc: February 2nd, 1997
+  - name: Location
+    desc: Yokohama, Kanagawa
+
+skills:
+  - name: JavaScript
+    desc: むずかしい
+  - name: React
+    desc: むずかしい
+  - name: Ruby
+    desc: むずかしい
+
+accounts:
+  - name: GitHub
+    uid: uutarou10
+    url: https://github.com/uutarou10
+  - name: Qiita 
+    uid: uutarou10
+    url: https://qiita.com/uutarou10
+  - name: はてなブログ
+    uid: ゆるふわ技術日誌
+    url: https://yurufuwa-tech.hatenablog.com
+  - name: Twitter 
+    uid: uutarou10
+    url: https://twitter.com/uutarou10
+
+hobbies:
+  - name: カメラ
+    desc: センスはないけどカメラが好きです。現在はRICOH GRⅡを愛用中。主に風景写真をとります。
+  - name: ドライブ
+    desc: クルマは持ってないので、主にレンタカー、時々家のセレナ(C24)に乗ってお出かけします。運転するのが好き。金欠で最近は行けてません。
+  - name: アイドル
+    desc: かつてはAKBグループ、現在はでんぱ組.incを推しています。おすすめ曲を貼っておくので聴いて欲しい…。
