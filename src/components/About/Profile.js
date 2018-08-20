@@ -13,7 +13,7 @@ export default ({profile}) => {
   return (
     <ProfileDlContainer>
       {profile.map(obj => (
-        <div>
+        <div key={obj.name}>
           <dt>{obj.name}</dt>
           <dd>{obj.desc}</dd>
         </div>

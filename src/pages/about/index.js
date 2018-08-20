@@ -3,9 +3,15 @@ import HelmetBase from '../../components/HelmetBase'
 import Profile from '../../components/About/Profile';
 import Accounts from '../../components/About/Accounts';
 import DescriptionList from '../../components/About/DescriptionList';
+import styled from 'styled-components';
+
+const FrameWrapper = styled.div`
+  iframe {
+    max-width: 100%;
+  }
+`
 
 export default ({data}) => {
-  console.log(data);
   const siteTitle = data.site.siteMetadata.title
   return (
     <div className='section'>
@@ -35,14 +41,16 @@ export default ({data}) => {
       <p className='is-italic'>割とどうでもいい話</p>
       <DescriptionList list={data.dataYaml.hobbies} />
 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/NypVvG9fQ7o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>▲でんぱ組を知ったきっかけとなった曲。</p>
+      <FrameWrapper>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/NypVvG9fQ7o" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>▲でんぱ組を知ったきっかけとなった曲。</p>
 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/EGy39OMyHzw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>▲イントロとテンポがたまらん。ライブで聴くとアガる。</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/EGy39OMyHzw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>▲イントロとテンポがたまらん。ライブで聴くとアガる。</p>
 
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/qDrm8NfhgsU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      <p>▲7人体制初の夏曲。ライブで聴きたいですなぁ。</p>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/qDrm8NfhgsU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <p>▲7人体制初の夏曲。ライブで聴きたいですなぁ。</p>
+      </FrameWrapper>
     </div>
   )
 }
