@@ -7,12 +7,12 @@ profile:
     desc: Yokohama, Kanagawa
 
 skills:
+  - name: Java
+    desc: 初めてまともにやったプログラミング言語のような。
   - name: JavaScript
-    desc: むずかしい
-  - name: React
-    desc: むずかしい
+    desc: フロントエンドで主に触る。仕様がどんどん進化するのでちゃんとキャッチアップせねば。 
   - name: Ruby
-    desc: むずかしい
+    desc: 思いつくメソッドはだいたい実装されているので、ちょっとしたスクリプトを書いたりするときによく使う。Railsもたまにやる。
 
 accounts:
   - name: GitHub
@@ -33,5 +33,7 @@ hobbies:
     desc: センスはないけどカメラが好きです。現在はRICOH GRⅡを愛用中。主に風景写真をとります。
   - name: ドライブ
     desc: クルマは持ってないので、主にレンタカー、時々家のセレナ(C24)に乗ってお出かけします。運転するのが好き。金欠で最近は行けてません。
+  - name: ヤバイTシャツ屋さん(バンド)
+    desc: そういう名前のバンドです。
   - name: アイドル
     desc: かつてはAKBグループ、現在はでんぱ組.incを推しています。おすすめ曲を貼っておくので聴いて欲しい…。
