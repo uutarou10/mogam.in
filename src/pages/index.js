@@ -12,7 +12,10 @@ class BlogIndex extends React.Component {
 
     return (
       <div className='section'>
-        <HelmetBase siteTitle={siteTitle} />
+        <HelmetBase
+          siteTitle={siteTitle}
+          location={this.props.location}
+        />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
           return (
