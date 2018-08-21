@@ -29,6 +29,8 @@ module.exports = class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
+          <script async src="https://b.st-hatena.com/js/bookmark_button.js" charSet="utf-8" />
+          <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
           {this.props.headComponents}
           {css}
         </head>
@@ -41,6 +43,7 @@ module.exports = class HTML extends React.Component {
           />
           {this.props.postBodyComponents}
           <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" />
+          <div id="fb-root"></div>
         </body>
       </html>
     )

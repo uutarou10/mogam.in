@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import get from 'lodash/get'
 import Tags from '../components/Tags';
 import HelmetBase from '../components/HelmetBase'
+import ShareButton from '../components/ShareButton';
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -19,7 +20,7 @@ class BlogPostTemplate extends React.Component {
         <hr />
         <div dangerouslySetInnerHTML={{ __html: post.html }} className='content' />
         <hr />
-        
+        <ShareButton />
         <ul className='columns is-mobile'>
           {previous && (
             <li className='column has-text-left'>
