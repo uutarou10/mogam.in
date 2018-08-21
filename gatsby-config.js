@@ -4,18 +4,12 @@ module.exports = {
     author: "Kyle Mathews",
   },
   plugins: [
+    /* ---------- Post ---------- */ 
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/posts`,
         name: "posts",
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/data`,
-        name: "data",
       },
     },
     {
@@ -40,6 +34,22 @@ module.exports = {
         ],
       },
     },
+
+    /* ---------- About page ---------- */ 
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data`,
+        name: "data",
+      },
+    },
+    'gatsby-transformer-yaml',
+
+    /* ---------- Style ---------- */ 
+    'gatsby-plugin-sass',
+    'gatsby-plugin-styled-components',
+
+    /* ---------- Others ---------- */ 
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -50,8 +60,5 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
-    'gatsby-plugin-sass',
-    'gatsby-plugin-styled-components',
-    'gatsby-transformer-yaml'
   ],
 }
