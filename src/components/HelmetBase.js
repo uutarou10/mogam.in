@@ -11,7 +11,6 @@ export default ({
   const title = pageTitle.length === 0 ? siteTitle : `${pageTitle} | ${siteTitle}`
   const pageDescription = description || 'アイドル好きのWebエンジニア見習いが日々の勉強で知ったことを書き溜めるブログ。'
   const ogType = location.pathname.startsWith('/posts') ? 'article' : 'website'
-  console.log(location)
 
   return (
     <Helmet>
