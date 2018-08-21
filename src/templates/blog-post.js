@@ -17,6 +17,7 @@ class BlogPostTemplate extends React.Component {
           siteTitle={siteTitle}
           pageTitle={post.frontmatter.title}
           description={post.excerpt}
+          siteUrl={this.props.data.site.siteMetadata.siteUrl}
           location={this.props.location}
         />
         <h2 className='is-size-3 has-text-weight-bold'>{post.frontmatter.title}</h2>
@@ -56,6 +57,7 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         author
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {

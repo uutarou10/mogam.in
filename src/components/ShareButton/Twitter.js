@@ -10,7 +10,6 @@ export default class Twitter extends React.Component {
       <a ref='tweetButton'
         href='https://twitter.com/share'
         className='twitter-share-button'
-        data-text={this.props.text}
         data-show-count='false'
         data-size='large'
       >Tweet</a>    

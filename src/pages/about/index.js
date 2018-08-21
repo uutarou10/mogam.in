@@ -12,11 +12,16 @@ const FrameWrapper = styled.div`
   }
 `
 
-export default ({data}) => {
+export default ({data, location}) => {
   const siteTitle = data.site.siteMetadata.title
   return (
     <div className='section'>
-      <HelmetBase pageTitle='About me' siteTitle={siteTitle} />
+      <HelmetBase
+        pageTitle='About me'
+        siteTitle={siteTitle}
+        siteUrl={data.site.siteMetadata.siteUrl}
+        location={location}
+      />
       <h2 className='is-size-3 has-text-weight-bold'>About me</h2>
       <hr />
       <h3 className='is-size-4 has-text-weight-bold'>Profile</h3>
@@ -84,6 +89,7 @@ export const aboutQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     dataYaml {

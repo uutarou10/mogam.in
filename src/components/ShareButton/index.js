@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 export default () => {
   return (
     <Wrapper>
-      <Twitter text={window.document.title} />
+      <Twitter />
       <Hatena />
     </Wrapper>
   )

@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Gatsby Starter Blog",
     author: "Kyle Mathews",
+    siteUrl: 'https://mogam.in'
   },
   plugins: [
     /* ---------- Post ---------- */ 

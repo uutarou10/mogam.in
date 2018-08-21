@@ -15,6 +15,7 @@ class BlogIndex extends React.Component {
         <HelmetBase
           siteTitle={siteTitle}
           location={this.props.location}
+          siteUrl={this.props.data.site.siteMetadata.siteUrl}
         />
         {posts.map(({ node }) => {
           const title = get(node, 'frontmatter.title') || node.fields.slug
@@ -43,6 +44,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
