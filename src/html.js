@@ -43,7 +43,6 @@ module.exports = class HTML extends React.Component {
           />
           {this.props.postBodyComponents}
           <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js" />
-          <div id="fb-root"></div>
         </body>
       </html>
     )
