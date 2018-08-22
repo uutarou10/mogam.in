@@ -23,6 +23,7 @@ module.exports = class HTML extends React.Component {
     return (
       <html {...this.props.htmlAttributes}>
         <head>
+          <meta name="google-site-verification" content="vW9UFJW_6qmKPcguNP_1thoBOfMMzD_4EScHWi36Jdo" />
           <meta charSet="utf-8" />
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
