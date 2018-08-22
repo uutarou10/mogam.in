@@ -1,7 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby Starter Blog",
-    author: "Kyle Mathews",
+    title: "Mogami#Log",
     siteUrl: process.env.SITE_URL || 'https://mogam.in'
   },
   plugins: [
@@ -56,7 +55,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-109873847-2`,
       },
     },
     `gatsby-plugin-offline`,
