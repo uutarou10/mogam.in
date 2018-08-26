@@ -58,7 +58,21 @@ module.exports = {
         trackingId: `UA-109873847-2`,
       },
     },
-    `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+
+    /* ---------- PWA ---------- */ 
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Mogami#Log`,
+        short_name: `Mogami#Log`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `minimal-ui`,
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+      }
+    },
+    `gatsby-plugin-offline`,
   ],
 }
