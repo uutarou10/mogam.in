@@ -68,7 +68,7 @@ module.exports = {
         short_name: `Mogami#Log`,
         start_url: `/`,
         background_color: `#f7f0eb`,
-        theme_color: `#a2466c`,
+        theme_color: `#00D1B2`,
         display: `minimal-ui`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
       }
