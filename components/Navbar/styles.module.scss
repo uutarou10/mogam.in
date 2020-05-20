@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.logo {
+  width: 72px;
+  height: 72px;
+  margin-right: 18px;
+  transition: .2s transform;
+
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
+}
+
+.link {
+  font-weight: 500;
+  font-size: 18px;
+  color: #EEEEEE;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 15px;
+  transition: .2s color;
+
+  &:hover {
+    color: #00ADB5;
+  }
+}
+

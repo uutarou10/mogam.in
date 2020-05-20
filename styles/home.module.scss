@@ -49,6 +49,11 @@
     color: #EEEEEE;
     text-align: center;
     text-decoration: none;
+    transition: .2s color;
+
+    &:hover {
+      color: #00ADB5;
+    }
   }
 
   &__link:not(:last-child) {
