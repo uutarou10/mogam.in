@@ -10,7 +10,7 @@ const App = ({Component, pageProps}: AppProps) => {
       <Head>
         <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;900&display=swap" rel="stylesheet" />
       </Head>
-      <div style={{height: '100vh', width: '940px', margin: 'auto'}}>
+      <div style={{height: '100vh', width: '940px', margin: 'auto', color: '#E5E5E5'}}>
         <Component {...pageProps} />
       </div>
     </>

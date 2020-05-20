@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from "next/head";
 import {Navbar} from "../../components/Navbar";
+import {PageHeader} from "../../components/PageHeader";
 
 export default () => {
   return (
@@ -10,6 +11,10 @@ export default () => {
       </Head>
 
       <Navbar />
+      <PageHeader title={"about me"} />
+      <main>
+        ここにかくよ。のなかだよ。
+      </main>
     </>
   )
 }
