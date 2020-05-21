@@ -1,0 +1,37 @@
+.pageHeader {
+  margin-top: 54px;
+  margin-bottom: 70px;
+}
+.main {
+  display: flex;
+}
+
+.profilePic {
+  display: flex;
+  justify-content: center;
+  min-width: 340px;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+  }
+}
+
+.article {
+}
+
+.profileSection {
+  margin-bottom: 30px;
+
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  p {
+    line-height: 150%;
+    font-weight: 300;
+  }
+}
