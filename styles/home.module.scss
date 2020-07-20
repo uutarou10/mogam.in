@@ -30,6 +30,17 @@
   }
 
   &__logo {
+    @keyframes logoAnimation {
+      0% {
+        transform: rotate(-3deg);
+      }
+      100% {
+        transform: rotate(3deg);
+      }
+    }
+
+    animation: logoAnimation infinite alternate ease-in-out forwards 150ms;
+    animation-iteration-count: 8;
     display: block;
     position: absolute;
     width: 100px;
