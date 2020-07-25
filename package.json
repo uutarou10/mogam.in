@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "9.4.0",
+    "dayjs": "^1.8.30",
+    "next": "9.4.4",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "rss-parser": "^3.9.0",
     "sass": "^1.26.5"
   },
   "devDependencies": {
