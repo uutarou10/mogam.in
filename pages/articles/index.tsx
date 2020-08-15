@@ -28,7 +28,7 @@ export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
         </div>
         <hr className={styles.separator} />
         {articles.filter(article => selectedMedia === 'all' ? true : article.media === selectedMedia).map(item => (
-          <article className={styles.article}>
+          <article key={item.url} className={styles.article}>
             <a className={styles.article__title} href={item.url} target="_blank" rel="noopener"><h2>{item.title}</h2></a>
             <div className={styles.article__metadata}>{dayjs(item.date).format('YYYY-MM-DD')} from {item.media}</div>
             <div className={styles.article__body}>{item.content}</div>
