@@ -28,25 +28,25 @@ export default () => {
 
       <main>
         <div className={styles.hintText}>
-          <p>ご連絡は以下のフォームまたはTwitterのDMよりお願いいたします。</p>
+          <p>ご連絡は以下のフォームまたは<a href="https://twitter.com/mogamin3" target="_blank" rel="noopener">Twitter</a>のDMよりお願いいたします。</p>
         </div>
 
         <div>
-          <form>
-            <div>
-              <label htmlFor="name">お名前</label>
-              <input id="name" required={true} value={name} onChange={onChangeName} />
+          <form className={styles.contactForm}>
+            <div className={styles["contactForm__fieldContainer"]}>
+              <label className={styles["contactForm__label"]} htmlFor="name">📛 お名前</label>
+              <input id="name" className={styles["contactForm__input"]} required={true} value={name} onChange={onChangeName} />
             </div>
-            <div>
-              <label htmlFor="email">メールアドレス</label>
-              <input id="email" required={true} type="email" value={email} onChange={onChangeEmail} />
+            <div className={styles["contactForm__fieldContainer"]}>
+              <label className={styles["contactForm__label"]} htmlFor="email">📩 メールアドレス</label>
+              <input id="email" className={styles["contactForm__input"]} required={true} type="email" value={email} onChange={onChangeEmail} />
             </div>
-            <div>
-              <label htmlFor="content">本文(400字まで)</label>
-              <textarea id="content" required={true} value={content} onChange={onChangeContent} />
+            <div className={styles["contactForm__fieldContainer"]}>
+              <label className={styles["contactForm__label"]} htmlFor="content">✒️ 本文(400字まで)</label>
+              <textarea id="content" className={styles["contactForm__textarea"]} required={true} value={content} onChange={onChangeContent} />
             </div>
-            <div>
-              <button type="submit" disabled={!isValid}>送信</button>
+            <div className={styles["contactForm__buttonContainer"]}>
+              <button className={styles["contactForm__button"]} type="submit" disabled={!isValid}>送信</button>
             </div>
           </form>
         </div>
