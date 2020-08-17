@@ -3,6 +3,7 @@ import Head from "next/head";
 import {Navbar} from "../../components/Navbar";
 import styles from "../../styles/contact.module.scss";
 import {PageHeader} from "../../components/PageHeader";
+import axios from 'axios';
 
 export default () => {
   const {
@@ -12,8 +13,9 @@ export default () => {
     onChangeName,
     onChangeEmail,
     onChangeContent,
-    isValid
-  } = useFormState();
+    isValid,
+    onSubmit
+  } = useContactFormState();
 
   return (
     <>
@@ -32,7 +34,7 @@ export default () => {
         </div>
 
         <div>
-          <form className={styles.contactForm}>
+          <form className={styles.contactForm} onSubmit={(e: React.FormEvent) => {e.preventDefault(); onSubmit();}}>
             <div className={styles["contactForm__fieldContainer"]}>
               <label className={styles["contactForm__label"]} htmlFor="name">📛 お名前</label>
               <input id="name" className={styles["contactForm__input"]} required={true} value={name} onChange={onChangeName} />
@@ -55,7 +57,7 @@ export default () => {
   );
 };
 
-const useFormState = () => {
+const useContactFormState = () => {
   type Action = {type: 'inputName' | 'inputEmail' | 'inputContent', input: string} | {type: 'reset'};
 
   const initialState = {
@@ -108,12 +110,27 @@ const useFormState = () => {
   const onChangeName = (changeEvent: React.ChangeEvent<HTMLInputElement>) => dispatch({type: 'inputName', input: changeEvent.target.value});
   const onChangeEmail = (changeEvent: React.ChangeEvent<HTMLInputElement>) => dispatch({type: 'inputEmail', input: changeEvent.target.value});
   const onChangeContent = (changeEvent: React.ChangeEvent<HTMLTextAreaElement>) => dispatch({type: 'inputContent', input: changeEvent.target.value});
+  const onSubmit = async () => {
+    try {
+      await axios.post('https://us-central1-mogamin-playground.cloudfunctions.net/sendContact', {
+        name: state.name.trim(),
+        email: state.email.trim(),
+        content: state.content.trim()
+      });
+      alert('送信しました。返信が必要と判断したものに関してはこちらよりご連絡いたします。');
+      dispatch({type: 'reset'});
+    } catch (e) {
+      alert('申し訳ありません。送信できませんでした。\n再度お試しください。');
+      return;
+    }
+  }
 
   return {
     ...state,
     isValid: isValidForm,
     onChangeName,
     onChangeEmail,
-    onChangeContent
+    onChangeContent,
+    onSubmit
   };
 }
