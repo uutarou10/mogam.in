@@ -1,0 +1,73 @@
+.pageHeader {
+  margin-top: 54px;
+  margin-bottom: 70px;
+}
+
+.hintText {
+  text-align: center;
+  margin-bottom: 30px;
+
+  a {
+    color: inherit;
+  }
+}
+
+.contactForm {
+  &__fieldContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__label {
+    margin-bottom: 6px;
+  }
+
+  %inputElement {
+    width: 100%;
+    padding: 8px;
+    color: #393E46;
+    border-radius: 2px;
+    border: 1px #EEEEEE solid;
+    line-height: 150%;
+    box-sizing: border-box;
+  }
+
+  &__input {
+    @extend %inputElement;
+  }
+
+  &__textarea {
+    @extend %inputElement;
+    height: 150px;
+  }
+
+  &__button {
+    height: 40px;
+    width: 120px;
+    color: #E5E5E5;
+    background-color: #00ADB5;
+    border-radius: 2px;
+    border: none;
+    transition: opacity 0.2s, background-color 0.2s;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:enabled:hover {
+      background-color: #01b8c4;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+}
