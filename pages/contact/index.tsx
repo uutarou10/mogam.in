@@ -10,6 +10,7 @@ export default () => {
     name,
     email,
     content,
+    isSending,
     onChangeName,
     onChangeEmail,
     onChangeContent,
@@ -48,7 +49,7 @@ export default () => {
               <textarea id="content" className={styles["contactForm__textarea"]} required={true} value={content} onChange={onChangeContent} />
             </div>
             <div className={styles["contactForm__buttonContainer"]}>
-              <button className={styles["contactForm__button"]} type="submit" disabled={!isValid}>送信</button>
+              <button className={styles["contactForm__button"]} type="submit" disabled={!isValid || isSending}>{isSending ? '送信中...' : '送信'}</button>
             </div>
           </form>
         </div>
@@ -58,12 +59,13 @@ export default () => {
 };
 
 const useContactFormState = () => {
-  type Action = {type: 'inputName' | 'inputEmail' | 'inputContent', input: string} | {type: 'reset'};
+  type Action = {type: 'inputName' | 'inputEmail' | 'inputContent', input: string} | {type: 'reset' | 'startSend' | 'doneSend'};
 
   const initialState = {
     name: '',
     email: '',
-    content: ''
+    content: '',
+    isSending: false
   };
 
   const reducer = (state: typeof initialState, action: Action): typeof initialState => {
@@ -89,6 +91,20 @@ const useContactFormState = () => {
         };
       }
 
+      case 'startSend': {
+        return {
+          ...state,
+          isSending: true
+        };
+      }
+
+      case 'doneSend': {
+        return {
+          ...state,
+          isSending: false
+        }
+      }
+
       case 'reset': {
         return initialState;
       }
@@ -112,6 +128,7 @@ const useContactFormState = () => {
   const onChangeContent = (changeEvent: React.ChangeEvent<HTMLTextAreaElement>) => dispatch({type: 'inputContent', input: changeEvent.target.value});
   const onSubmit = async () => {
     try {
+      dispatch({type: 'startSend'});
       await axios.post('https://us-central1-mogamin-playground.cloudfunctions.net/sendContact', {
         name: state.name.trim(),
         email: state.email.trim(),
@@ -122,6 +139,8 @@ const useContactFormState = () => {
     } catch (e) {
       alert('申し訳ありません。送信できませんでした。\n再度お試しください。');
       return;
+    } finally {
+      dispatch({type: 'doneSend'});
     }
   }
 

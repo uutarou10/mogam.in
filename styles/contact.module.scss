@@ -55,9 +55,12 @@
     background-color: #00ADB5;
     border-radius: 2px;
     border: none;
-    transition: background-color 0.2s;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s, background-color 0.2s;
     cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
 
     &:enabled:hover {
       background-color: #01b8c4;
