@@ -11,40 +11,54 @@ import axios from 'axios';
 // });
 
 export const sendContact = functions.https.onRequest(async (req, res) => {
-  admin.initializeApp();
-  const firestore = admin.firestore();
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
-  const data = {
-    name: req.body.name,
-    email: req.body.email,
-    content: req.body.content
-  };
+  if (req.method === 'OPTIONS') {
+    res.setHeader('Access-Control-Allow-Methods', 'POST');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.sendStatus(204);
+    return;
+  }
 
-  if (Object.values(data).some(v => v === null || v === undefined)) {
-    res.status(400);
-    res.send({message: 'Bad request'});
+  if (req.method === 'POST') {
+    admin.initializeApp();
+    const firestore = admin.firestore();
+
+    const data = {
+      name: req.body.name,
+      email: req.body.email,
+      content: req.body.content
+    };
+
+    if (Object.values(data).some(v => v === null || v === undefined)) {
+      res.status(400);
+      res.send({message: 'Bad request'});
+      res.end();
+      return;
+    }
+
+    const collectionRef = firestore.collection('site_contact')
+
+    try {
+      await collectionRef.add({
+        ...data,
+        ipAddress: req.ip,
+        timestamp: admin.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (e) {
+      console.error(e);
+      res.status(500);
+      res.send({message: 'Internal server error'});
+      res.end();
+      return;
+    }
+
+    res.sendStatus(204);
     res.end();
     return;
   }
 
-  const collectionRef = firestore.collection('site_contact')
-
-  try {
-    await collectionRef.add({
-      ...data,
-      ipAddress: req.ip,
-      timestamp: admin.firestore.FieldValue.serverTimestamp()
-    });
-  } catch (e) {
-    console.error(e);
-    res.status(500);
-    res.send({message: 'Internal server error'});
-    res.end();
-    return;
-  }
-
-  res.status(200);
-  res.send({});
+  res.sendStatus(405);
   res.end();
   return;
 });
