@@ -1,6 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import axios from 'axios';
+import * as crypt from 'crypto';
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -117,3 +118,31 @@ export const newContactHandler = functions.firestore.document('site_contact/{con
     ]
   })
 });
+
+export const checkUpdateRssFeeds = functions.pubsub.schedule('every 15 minutes').onRun(async () => {
+
+  admin.initializeApp();
+  const firestore = admin.firestore();
+  const batch = firestore.batch();
+
+  const feeds = [
+    {media: 'blog', url: 'https://yurufuwa-tech.hatenablog.com/rss'},
+    {media: 'note', url: 'https://note.com/uutarou/rss'},
+    {media: 'qiita', url: 'https://qiita.com/mogamin3/feed.atom'}
+  ];
+
+  const results = await Promise.all(feeds.map(feed => axios.get(feed.url).then(res => ({media: feed.media, data: res.data}))));
+
+  const collectionRef = firestore.collection('site_feed_hash');
+
+  results.forEach(result => {
+    batch.update(collectionRef.doc(result.media), {hash: md5(result.data)});
+  });
+
+  await batch.commit();
+});
+
+const md5 = (str: string) => {
+  const md5 = crypt.createHash('md5');
+  return md5.update(str).digest('hex');
+};
