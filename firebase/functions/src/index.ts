@@ -10,6 +10,11 @@ import * as crypt from 'crypto';
 //   functions.logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+const initFirebaseApp = () => {
+  if (!admin.apps.length) {
+    admin.initializeApp();
+  }
+}
 
 export const sendContact = functions.https.onRequest(async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +27,7 @@ export const sendContact = functions.https.onRequest(async (req, res) => {
   }
 
   if (req.method === 'POST') {
-    admin.initializeApp();
+    initFirebaseApp();
     const firestore = admin.firestore();
 
     const data = {
@@ -120,8 +125,13 @@ export const newContactHandler = functions.firestore.document('site_contact/{con
 });
 
 export const checkUpdateRssFeeds = functions.pubsub.schedule('every 15 minutes').onRun(async () => {
+  initFirebaseApp();
 
-  admin.initializeApp();
+  const md5 = (str: string) => {
+    const md5 = crypt.createHash('md5');
+    return md5.update(str).digest('hex');
+  };
+
   const firestore = admin.firestore();
   const batch = firestore.batch();
 
@@ -142,7 +152,14 @@ export const checkUpdateRssFeeds = functions.pubsub.schedule('every 15 minutes')
   await batch.commit();
 });
 
-const md5 = (str: string) => {
-  const md5 = crypt.createHash('md5');
-  return md5.update(str).digest('hex');
-};
+export const kickDeployHook = functions.firestore.document('site_feed_hash/{media}').onUpdate(async () => {
+  const deployHookUrl = functions.config().vercel.deployhook as unknown;
+  const webhookUrl = functions.config().slack.webhook as unknown;
+
+  if (typeof deployHookUrl !== 'string' || typeof webhookUrl !== 'string') {
+    throw new Error('invalid config');
+  }
+
+  await axios.post(deployHookUrl);
+  await axios.post(webhookUrl, {text: ':rocket:デプロイが開始されました'});
+});
