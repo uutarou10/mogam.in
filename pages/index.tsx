@@ -15,8 +15,10 @@ export default function Home() {
         <main>
 
           <header className={styles.header}>
-            <img className={styles.header__logo} src="/logo.svg" alt="logo"/>
-            <h1 className={styles.header__title}>mogam.in</h1>
+            <h1 className={styles.header__title}>
+              mogam.in
+              <img className={styles.header__logo} src="/logo.svg" alt="logo"/>
+            </h1>
             <div className={styles.header__subTitle}>portfolio ni mierukedo Next.js sawaritakatta dake...</div>
           </header>
 
