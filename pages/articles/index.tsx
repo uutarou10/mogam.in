@@ -1,25 +1,14 @@
 import React from 'react';
-import Head from "next/head";
-import {Navbar} from "../../components/Navbar";
-import {PageHeader} from "../../components/PageHeader";
 import styles from '../../styles/articles.module.scss';
 import {GetStaticProps, InferGetStaticPropsType} from "next";
 import Parser from 'rss-parser';
 import dayjs from 'dayjs';
+import {Layout} from "../../components/Layout";
 
 export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [selectedMedia, setSelectedMedia] = React.useState<MediaType | 'all'>('all');
   return (
-    <>
-      <Head>
-        <title>articles | mogam.in</title>
-      </Head>
-
-      <Navbar/>
-      <div className={styles.pageHeader}>
-        <PageHeader title={"articles"}/>
-      </div>
-      <main>
+      <Layout pageTitle="articles">
         <div className={styles.mediaSelector}>
           <div className={selectedMedia === 'all' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('all')}>すべて</div>
           <div className={selectedMedia === 'blog' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('blog')}>ブログ</div>
@@ -34,8 +23,7 @@ export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
             <div className={styles.article__body}>{item.content}</div>
           </article>
         ))}
-      </main>
-    </>
+      </Layout>
   );
 };
 

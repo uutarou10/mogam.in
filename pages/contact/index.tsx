@@ -4,6 +4,7 @@ import {Navbar} from "../../components/Navbar";
 import styles from "../../styles/contact.module.scss";
 import {PageHeader} from "../../components/PageHeader";
 import axios from 'axios';
+import {Layout} from "../../components/Layout";
 
 export default () => {
   const {
@@ -19,17 +20,7 @@ export default () => {
   } = useContactFormState();
 
   return (
-    <>
-      <Head>
-        <title>contact | mogam.in</title>
-      </Head>
-
-      <Navbar/>
-      <div className={styles.pageHeader}>
-        <PageHeader title={"contact"}/>
-      </div>
-
-      <main>
+      <Layout pageTitle="contact">
         <div className={styles.hintText}>
           <p>ご連絡は以下のフォームまたは<a href="https://twitter.com/mogamin3" target="_blank" rel="noopener">Twitter</a>のDMよりお願いいたします。</p>
         </div>
@@ -53,8 +44,7 @@ export default () => {
             </div>
           </form>
         </div>
-      </main>
-    </>
+      </Layout>
   );
 };
 
