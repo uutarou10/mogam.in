@@ -8,7 +8,6 @@ export default function Home() {
     <>
       <Head>
         <title>mogam.in</title>
-        <link rel="icon" href="/favicon.ico"/>
       </Head>
 
       <div className={styles.container}>
