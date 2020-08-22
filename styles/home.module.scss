@@ -7,16 +7,19 @@
 
 .header {
   margin-bottom: 36px;
-  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
 
   &__title {
-    width: auto;
+    position: relative;
+    width: fit-content;
+    margin: auto;
     color: #EEEEEE;
     font-weight: 900;
     text-shadow: 2px 2px 0px #00ADB5;
     text-align: center;
     font-size: 48px;
-    margin: 0;
     line-height: 150%;
   }
 
@@ -45,8 +48,8 @@
     position: absolute;
     width: 100px;
     height: 100px;
-    right: 238px;
-    top: -80px;
+    left: 100%;
+    bottom: calc(100% - 15px);
   }
 }
 
@@ -69,5 +72,32 @@
 
   &__link:not(:last-child) {
     padding-right: 70px;
+  }
+}
+
+@media screen and (max-width: 940px) {
+  .navigation {
+    flex-direction: column;
+
+    &__link {
+      margin-bottom: 12px;
+    }
+
+    &__link:not(:last-child) {
+      padding: 0;
+    }
+  }
+
+  .header {
+    &__logo {
+      width: 80px;
+      height: 80px;
+      bottom: 100%;
+      left: calc(50% - 40px);
+    }
+
+    &__subTitle {
+      font-size: 90%;
+    }
   }
 }

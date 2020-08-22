@@ -1,30 +1,20 @@
 import React from 'react';
-import Head from "next/head";
-import {Navbar} from "../../components/Navbar";
-import {PageHeader} from "../../components/PageHeader";
 import styles from '../../styles/about.module.scss';
+import {Layout} from "../../components/Layout";
 
 export default () => {
   return (
-    <>
-      <Head>
-        <title>about me | mogam.in</title>
-      </Head>
-
-      <Navbar/>
-      <div className={styles.pageHeader}>
-        <PageHeader title={"about me"}/>
-      </div>
-      <main className={styles.main}>
+    <Layout pageTitle="about me">
+      <div className={styles.container}>
         <div className={styles.profilePic}>
           <img src="/profile.png" alt="profile photo"/>
         </div>
         <article className={styles.article}>
           {profileSections.map(renderProfileSection)}
         </article>
-      </main>
-    </>
-  );
+      </div>
+    </Layout>
+  )
 };
 
 interface ProfileSection {
