@@ -33,7 +33,7 @@ export default () => {
             </div>
             <div className={styles["contactForm__fieldContainer"]}>
               <label className={styles["contactForm__label"]} htmlFor="email">📩 メールアドレス</label>
-              <input id="email" className={styles["contactForm__input"]} required={true} type="email" value={email} onChange={onChangeEmail} />
+              <input id="email" inputMode="email" className={styles["contactForm__input"]} required={true} type="email" value={email} onChange={onChangeEmail} />
             </div>
             <div className={styles["contactForm__fieldContainer"]}>
               <label className={styles["contactForm__label"]} htmlFor="content">✒️ 本文(400字まで)</label>
