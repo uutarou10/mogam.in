@@ -87,4 +87,17 @@
       padding: 0;
     }
   }
+
+  .header {
+    &__logo {
+      width: 80px;
+      height: 80px;
+      bottom: 100%;
+      left: calc(50% - 40px);
+    }
+
+    &__subTitle {
+      font-size: 90%;
+    }
+  }
 }
