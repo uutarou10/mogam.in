@@ -7,6 +7,6 @@
 
 @media screen and (max-width: 940px) {
    .pageWrap {
-     width: 100%;
+     width: calc(100% - 40px);
    }
 }

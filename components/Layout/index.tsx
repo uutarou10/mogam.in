@@ -22,7 +22,7 @@ export const Layout = ({pageTitle, children}: Props) => {
       <div className={styles.pageHeader}>
         <PageHeader title={pageTitle}/>
       </div>
-      <main>{children}</main>
+      <main className={styles.main}>{children}</main>
     </>
   );
 }
