@@ -13,7 +13,7 @@ export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
           <div className={selectedMedia === 'all' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('all')}>すべて</div>
           <div className={selectedMedia === 'blog' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('blog')}>ブログ</div>
           <div className={selectedMedia === 'qiita' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('qiita')}>Qiita</div>
-          <div  className={selectedMedia === 'note' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('note')}>note</div>
+          <div className={selectedMedia === 'note' ? styles["mediaSelector__item-active"] : styles.mediaSelector__item} onClick={() => setSelectedMedia('note')}>note</div>
         </div>
         <hr className={styles.separator} />
         {articles.filter(article => selectedMedia === 'all' ? true : article.media === selectedMedia).map(item => (
