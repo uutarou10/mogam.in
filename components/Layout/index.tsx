@@ -3,6 +3,7 @@ import styles from './layout.module.scss';
 import Head from "next/head";
 import {Navbar} from "../Navbar";
 import {PageHeader} from "../PageHeader";
+import {Footer} from "../Footer";
 
 interface Props {
   pageTitle: string;
@@ -23,6 +24,7 @@ export const Layout = ({pageTitle, children}: Props) => {
         <PageHeader title={pageTitle}/>
       </div>
       <main className={styles.main}>{children}</main>
+      <Footer />
     </>
   );
 }

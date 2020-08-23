@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head'
 import styles from '../styles/home.module.scss';
 import Link from 'next/link';
+import {Footer} from "../components/Footer";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
             </Link>
           </nav>
         </main>
+        <Footer />
       </div>
     </>
   )
