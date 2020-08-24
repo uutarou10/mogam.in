@@ -3,14 +3,17 @@ import Head from 'next/head'
 import styles from '../styles/home.module.scss';
 import Link from 'next/link';
 import {Footer} from "../components/Footer";
+import {Meta} from "../components/Meta";
 
 export default function Home() {
   return (
     <>
       <Head>
         <title>mogam.in</title>
+        <meta property="og:title" content="mogam.in" />
       </Head>
 
+      <Meta />
       <div className={styles.container}>
         <main>
 

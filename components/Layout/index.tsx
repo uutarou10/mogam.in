@@ -4,6 +4,7 @@ import Head from "next/head";
 import {Navbar} from "../Navbar";
 import {PageHeader} from "../PageHeader";
 import {Footer} from "../Footer";
+import {Meta} from "../Meta";
 
 interface Props {
   pageTitle: string;
@@ -13,8 +14,10 @@ interface Props {
 export const Layout = ({pageTitle, children}: Props) => {
   return (
     <>
+      <Meta />
       <Head>
         <title>{pageTitle} | mogam.in</title>
+        <meta property="og:title" content={pageTitle} />
       </Head>
 
       <div className={styles.navBarContainer}>
