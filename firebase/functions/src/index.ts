@@ -141,12 +141,13 @@ export const checkUpdateRssFeeds = functions.pubsub.schedule('every 15 minutes')
     {media: 'qiita', url: 'https://qiita.com/mogamin3/feed.atom'}
   ];
 
-  const results = await Promise.all(feeds.map(feed => axios.get(feed.url).then(res => ({media: feed.media, data: res.data}))));
+  const results = await Promise.all(feeds.map(feed => axios.get<string>(feed.url).then(res => ({media: feed.media, data: res.data}))));
 
   const collectionRef = firestore.collection('site_feed_hash');
 
   results.forEach(result => {
-    batch.update(collectionRef.doc(result.media), {hash: md5(result.data)});
+    // TODO: noteのRSSが毎回生成日時を突っ込んでくるのでいったん雑に取り除く処理を入れた。なんかいい解決策を考えることにする。
+    batch.update(collectionRef.doc(result.media), {hash: md5(result.data.replace(/<lastBuildDate>(.+)<\/lastBuildDate>/, ''))});
   });
 
   await batch.commit();
