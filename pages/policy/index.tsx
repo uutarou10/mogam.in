@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
 
-export default () => {
+const PolicyPage = () => {
   return (
     <Layout pageTitle={"Policy"}>
       <h2>個人情報の利用目的</h2>
@@ -50,3 +50,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default PolicyPage;

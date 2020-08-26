@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../styles/about.module.scss';
 import {Layout} from "../../components/Layout";
 
-export default () => {
+const AboutPage = () => {
   return (
     <Layout pageTitle="about me">
       <div className={styles.container}>
@@ -50,3 +50,5 @@ const profileSections: ProfileSection[] = [
   },
   {title: '😍 Hobbies', paragraphs: ['カメラ/バイク/ドライブ/ガジェットへの散財、無印良品などなど多趣味です。\n広く浅いタイプ。']}
 ];
+
+export default AboutPage;

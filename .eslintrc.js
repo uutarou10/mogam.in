@@ -1,5 +1,7 @@
 module.exports = {
-    "env": {
+  // なぜかエディタがエラー吐くので書いてみた。
+  "ignorePatterns": ['.eslintrc.js'],
+  "env": {
         "browser": true,
         "es2020": true,
         "node": false
@@ -22,5 +24,6 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+      "@typescript-eslint/explicit-module-boundary-types": "off"
     }
 };

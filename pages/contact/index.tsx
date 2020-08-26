@@ -1,12 +1,9 @@
 import React from 'react';
-import Head from "next/head";
-import {Navbar} from "../../components/Navbar";
 import styles from "../../styles/contact.module.scss";
-import {PageHeader} from "../../components/PageHeader";
 import axios from 'axios';
 import {Layout} from "../../components/Layout";
 
-export default () => {
+const ContactPage = () => {
   const {
     name,
     email,
@@ -22,7 +19,7 @@ export default () => {
   return (
       <Layout pageTitle="contact">
         <div className={styles.hintText}>
-          <p>ご連絡は以下のフォームまたは<a href="https://twitter.com/mogamin3" target="_blank" rel="noopener">Twitter</a>のDMよりお願いいたします。</p>
+          <p>ご連絡は以下のフォームまたは<a href="https://twitter.com/mogamin3" target="_blank" rel="noreferrer">Twitter</a>のDMよりお願いいたします。</p>
         </div>
 
         <div>
@@ -143,3 +140,5 @@ const useContactFormState = () => {
     onSubmit
   };
 }
+
+export default ContactPage;

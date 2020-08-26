@@ -5,7 +5,7 @@ import Parser from 'rss-parser';
 import dayjs from 'dayjs';
 import {Layout} from "../../components/Layout";
 
-export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
+const ArticlesPage = ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [selectedMedia, setSelectedMedia] = React.useState<MediaType | 'all'>('all');
   return (
       <Layout pageTitle="articles">
@@ -18,7 +18,7 @@ export default ({articles}: InferGetStaticPropsType<typeof getStaticProps>) => {
         <hr className={styles.separator} />
         {articles.filter(article => selectedMedia === 'all' ? true : article.media === selectedMedia).map(item => (
           <article key={item.url} className={styles.article}>
-            <a className={styles.article__title} href={item.url} target="_blank" rel="noopener"><h2>{item.title}</h2></a>
+            <a className={styles.article__title} href={item.url} target="_blank" rel="noreferrer"><h2>{item.title}</h2></a>
             <div className={styles.article__metadata}>{dayjs(item.date).format('YYYY-MM-DD')} from {item.media}</div>
             <div className={styles.article__body}>{item.content}</div>
           </article>
@@ -67,3 +67,5 @@ const convParserItemsToArticles = (parserItems: Parser.Item[], media: MediaType)
     media
   }));
 };
+
+export default ArticlesPage;
