@@ -1,9 +1,9 @@
-import React from "react";
-import { Layout } from "../../components/Layout";
+import React from 'react';
+import { Layout } from '../../components/Layout';
 
-export default () => {
+const PolicyPage = () => {
   return (
-    <Layout pageTitle={"Policy"}>
+    <Layout pageTitle={'Policy'}>
       <h2>個人情報の利用目的</h2>
       <p>
         当サイトでは、問合せフォームからのお問い合わせの際に、名前、メールアドレス、接続元IPアドレス等の個人情報をご登録いただく場合がございます。
@@ -50,3 +50,5 @@ export default () => {
     </Layout>
   );
 };
+
+export default PolicyPage;
