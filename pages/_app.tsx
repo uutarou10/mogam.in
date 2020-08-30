@@ -4,8 +4,22 @@ import 'normalize.css/normalize.css';
 import '../styles/index.scss';
 import styles from '../styles/app.module.scss';
 import Head from 'next/head';
+import { gtag } from '../lib/gtag';
+import { Router } from 'next/router';
 
 const App = ({ Component, pageProps }: AppProps) => {
+  React.useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      console.log('handleRouteChange', url);
+      gtag.pageView(url);
+    };
+    Router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
+
   return (
     <>
       <Head>
