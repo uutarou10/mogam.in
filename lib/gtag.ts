@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export const ga = {
+export const gtag = {
   pageView: (url: string) => {
     window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
