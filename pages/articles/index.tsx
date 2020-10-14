@@ -36,6 +36,16 @@ const ArticlesPage = ({
         </div>
         <div
           className={
+            selectedMedia === 'zenn'
+              ? styles['mediaSelector__item-active']
+              : styles.mediaSelector__item
+          }
+          onClick={() => setSelectedMedia('zenn')}
+        >
+          Zenn
+        </div>
+        <div
+          className={
             selectedMedia === 'qiita'
               ? styles['mediaSelector__item-active']
               : styles.mediaSelector__item
@@ -80,7 +90,7 @@ const ArticlesPage = ({
   );
 };
 
-type MediaType = 'qiita' | 'blog' | 'note';
+type MediaType = 'qiita' | 'blog' | 'note' | 'zenn';
 
 interface Article {
   title: string;
@@ -94,10 +104,11 @@ export const getStaticProps: GetStaticProps<{
   articles: Article[];
 }> = async () => {
   const parser = new Parser();
-  const [qiitaOutput, blogOutput, noteOutput] = await Promise.all([
+  const [qiitaOutput, blogOutput, noteOutput, zennOutput] = await Promise.all([
     parser.parseURL('https://qiita.com/mogamin3/feed.atom'),
     parser.parseURL('https://yurufuwa-tech.hatenablog.com/rss'),
     parser.parseURL('https://note.com/uutarou/rss'),
+    parser.parseURL('https://zenn.dev/mogamin/feed'),
   ]);
 
   return {
@@ -106,6 +117,7 @@ export const getStaticProps: GetStaticProps<{
         ...convParserItemsToArticles(qiitaOutput.items, 'qiita'),
         ...convParserItemsToArticles(blogOutput.items, 'blog'),
         ...convParserItemsToArticles(noteOutput.items, 'note'),
+        ...convParserItemsToArticles(zennOutput.items, 'zenn'),
       ].sort((a, b) => b.date - a.date),
     },
   };

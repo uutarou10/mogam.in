@@ -143,6 +143,7 @@ export const checkUpdateRssFeeds = functions.pubsub
       { media: 'blog', url: 'https://yurufuwa-tech.hatenablog.com/rss' },
       { media: 'note', url: 'https://note.com/uutarou/rss' },
       { media: 'qiita', url: 'https://qiita.com/mogamin3/feed.atom' },
+      { media: 'zenn', url: 'https://zenn.dev/mogamin/feed' },
     ];
 
     const results = await Promise.all(
