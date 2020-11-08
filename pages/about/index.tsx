@@ -1,13 +1,20 @@
 import React from 'react';
 import styles from '../../styles/about.module.scss';
 import { Layout } from '../../components/Layout';
+import Image from 'next/image';
 
 const AboutPage = () => {
   return (
     <Layout pageTitle="about me">
       <div className={styles.container}>
         <div className={styles.profilePic}>
-          <img src="/profile.png" alt="profile photo" />
+          <Image
+            src="/profile.png"
+            alt="profile photo"
+            width={200}
+            height={200}
+            layout={'fixed'}
+          />
         </div>
         <article className={styles.article}>
           {profileSections.map(renderProfileSection)}
