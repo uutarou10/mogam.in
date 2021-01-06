@@ -9,7 +9,7 @@
     "format": "prettier-eslint \"$PWD/**/*.{ts,tsx}\""
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.30",
     "next": "^10.0.1",
     "normalize.css": "^8.0.1",
